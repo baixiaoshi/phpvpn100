@@ -50,7 +50,11 @@
 $active_group = 'guoguovpn';
 $active_record = TRUE;
 
-if ($_SERVER['HTTP_HOST'] == 'www.phpvpn100.com') {
+$online_host = array(
+    'www.phpvpn100.com',
+    'www.phpvpn100.com:8088' //用于切换用的，如果有的大的改动，可以现在这个端口测试，没问题再转到80端口
+    );
+if (in_array($_SERVER['HTTP_HOST'], $online_host)) {
     $db['guoguovpn']['hostname'] = 'localhost';
 } else {
     $db['guoguovpn']['hostname'] = '192.168.1.106';
