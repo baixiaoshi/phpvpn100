@@ -50,7 +50,12 @@
 $active_group = 'guoguovpn';
 $active_record = TRUE;
 
-$db['guoguovpn']['hostname'] = '192.168.1.106';
+if ($_SERVER['HTTP_HOST'] == 'www.phpvpn100.com') {
+    $db['guoguovpn']['hostname'] = 'localhost';
+} else {
+    $db['guoguovpn']['hostname'] = '192.168.1.106';
+}
+
 
 $db['guoguovpn']['username'] = 'beibei';
 $db['guoguovpn']['password'] = '';

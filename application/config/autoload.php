@@ -53,7 +53,7 @@ $autoload['packages'] = array();
 */
 
 //$autoload['libraries'] = array('Smartytpl');
-$autoload['libraries'] = array('session','uri');
+$autoload['libraries'] = array('database','session','uri');
 
 /*
 | -------------------------------------------------------------------

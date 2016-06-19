@@ -18,13 +18,23 @@ class Member_model extends CI_Model {
 
     public function check_exists($mobile, $email) {
 
-
-        $sql = "SELECT * FROM guoguovpn.member WHERE mobile='$mobile' OR email='$email'";
-       
         $db = $this->load->database('guoguovpn', TRUE);
-        $ret = $db->query($sql)->row_array();
+        if (!empty($mobile)) {
+            $sql = "SELECT * FROM guoguovpn.member WHERE mobile='$mobile'";
+            $ret = $db->query($sql)->row();
+            if (!$ret) {
+                return FALSE;
+            }
+        }
+        if (!empty($email)) {
+            $sql = "SELECT * FROM guoguovpn.member WHERE email='$email'";
+            $ret = $db->query($sql)->row();
 
-       return empty($ret) ? FALSE : TRUE;
+            if (!$ret) {
+                return FALSE;
+            }
+        }
+        return TRUE;
     }
 
     public function get_userinfo($user_id) {
@@ -46,9 +56,23 @@ class Member_model extends CI_Model {
 
     public function add_user_time($mobile, $email, $days) {
 
-        $sql = "SELECT * FROM guoguovpn.member WHERE mobile='$mobile' AND email='$email'";
         $db = $this->load->database('guoguovpn', TRUE);
-        $ret_obj = $db->query($sql)->row();
+        if (!empty($mobile)) {
+            $sql = "SELECT * FROM guoguovpn.member WHERE mobile='$mobile'";
+            $ret_obj = $db->query($sql)->row();
+            if (!$ret_obj) {
+                return FALSE;
+            }
+        }
+        
+        if (!empty($email)) {
+            $sql = "SELECT * FROM guoguovpn.member WHERE email='$email'";
+            $ret_obj = $db->query($sql)->row();
+            if (!$ret_obj) {
+                return FALSE;
+            }
+        }
+        
         if ($ret_obj) {
             
             $end_time = $ret_obj->end_time;
@@ -65,7 +89,6 @@ class Member_model extends CI_Model {
                 return TRUE;
             }
         }
-
         return FALSE;
 
     }
