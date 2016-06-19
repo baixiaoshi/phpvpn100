@@ -56,15 +56,20 @@ $online_host = array(
     );
 if (in_array($_SERVER['HTTP_HOST'], $online_host)) {
     $db['guoguovpn']['hostname'] = 'localhost';
+    $db['guoguovpn']['username'] = 'root';
+    $db['guoguovpn']['password'] = 'baixiaoshi7080#';
+    $db['guoguovpn']['database'] = 'guoguovpn';
+    $db['guoguovpn']['dbdriver'] = 'mysqli';
 } else {
     $db['guoguovpn']['hostname'] = '192.168.1.106';
+    $db['guoguovpn']['username'] = 'beibei';
+    $db['guoguovpn']['password'] = '';
+    $db['guoguovpn']['database'] = 'guoguovpn';
+    $db['guoguovpn']['dbdriver'] = 'mysql';
 }
 
 
-$db['guoguovpn']['username'] = 'beibei';
-$db['guoguovpn']['password'] = '';
-$db['guoguovpn']['database'] = 'guoguovpn';
-$db['guoguovpn']['dbdriver'] = 'mysql';
+
 $db['guoguovpn']['dbprefix'] = '';
 $db['guoguovpn']['pconnect'] = TRUE;
 $db['guoguovpn']['db_debug'] = TRUE;
